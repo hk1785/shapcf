@@ -4,7 +4,7 @@
 Shapley Value for Causal Forests (SVCF) and Shapley Feature Importance for Causal Forests (SFICF)
 }
 \description{
-Using the estimated CATEs from \code{catecf}, computes (1) SVCF, a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF, a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. The package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
+Using the estimated CATEs from \code{catecf}, computes (1) SVCF, a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF, a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. 
 }
 \usage{
 svcf.sficf(tau, X, num.trees = 3000, num.trees.tune = 3000, num.rep = 1,

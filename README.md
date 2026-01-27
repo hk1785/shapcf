@@ -10,7 +10,7 @@ Author: Hyunwook Koh
 
 Maintainer: Hyunwook Koh <hyunwook.koh@stonybrook.edu>
 
-Description: This R package provides principled, explainable feature attribution methods for causal forests, grounded in the fair allocation principle of the Shapley value. The package implements (1) SVCF (Shapley Values for Causal Forests), a local explanation method that quantifies the signed contribution of each feature to an individual treatment effect, and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure obtained by aggregating SVCF across a cohort. In addition, the package provides SHAP-style visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
+Description: This R package provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Values for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. The package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
 
 Depends: R(>= 4.4.1), grf, ranger, treeshap, ggplot2, ggbeeswarm
 
@@ -44,12 +44,12 @@ install_github("hk1785/shapcf", force = TRUE)
 
 ### 1. Main Functions
 * :mag: **`catecf`**: Estimates conditional average treatment effects (**CATEs**) using causal forests.
-* :mag: **`svcf.sficf`**: Computes local (**SVCF**) and global (**SFICF**) Shapley values for feature attribution.
+* :mag: **`svcf.sficf`**: Computes **SVCF** (a local contribution measure that characterizes the directional contribution of each feature to an individual’s treatment effect) and **SFICF** (a global feature importance measure that extends SVCF to quantify feature importance at the cohort level
 
 ### 2. Visualization Tools
-* :mag: **`beeswarm.svcf.sficf`**: Summary (**Beeswarm**) plot visualizing the distribution of feature impacts.
+* :mag: **`beeswarm.svcf.sficf`**: Summary (**Beeswarm**) plot visualizing the distribution of feature contributions.
 
-* :mag: **`waterfall.svcf.sficf`**: Force (**Waterfall**) plot providing local explanations for individual observations.
+* :mag: **`waterfall.svcf.sficf`**: Force (**Waterfall**) plot providing local explanations for a given individual.
 
 * :mag: **`bar.sficf`**: Importance (**Bar**) plot ranking features by global importance scores.
 
@@ -114,7 +114,7 @@ More Details
 ## :mag: svcf.sficf
 
 ### Description
-Computes Shapley-based explanations for causal forests using estimated CATEs. Specifically, this function returns (1) **SVCF** (Shapley Values for Causal Forests), which quantify local, signed feature contributions to individual treatment effects, and (2) **SFICF** (Shapley Feature Importance for Causal Forests), a global feature importance measure obtained by aggregating SVCF across individuals.
+Using the estimated CATEs from \code{catecf}, computes (1) SVCF, a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF, a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. 
 
 ### Syntax
 ```
@@ -168,7 +168,7 @@ Example Data: Oral microbiome data on e-cigarette use and gingival inflammation 
 ```
 data(ecigarette)
 ```
-Estimate CATEs and compute SVCF / SFICF
+Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
 num.rep = 2, seed = 123)
@@ -258,7 +258,7 @@ Example Data: Oral microbiome data on e-cigarette use and gingival inflammation 
 ```
 data(ecigarette)
 ```
-Estimate CATEs and compute SVCF / SFICF
+Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
 num.rep = 2, seed = 123)
@@ -343,7 +343,7 @@ Example Data: Oral microbiome data on e-cigarette use and gingival inflammation 
 ```
 data(ecigarette)
 ```
-Estimate CATEs and compute SVCF / SFICF
+Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
 num.rep = 2, seed = 123)
@@ -413,7 +413,7 @@ Example Data: Oral microbiome data on e-cigarette use and gingival inflammation 
 ```
 data(ecigarette)
 ```
-Estimate CATEs and compute SVCF / SFICF
+Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
 num.rep = 2, seed = 123)
