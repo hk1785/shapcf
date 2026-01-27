@@ -268,7 +268,7 @@ num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
-Draw beeswarm plot
+Draw a beeswarm plot
 ```
 p.beeswarm <- beeswarm.svcf.sficf(svcf = svcf.sficf.out$svcf,
 sficf = svcf.sficf.out$sficf,
@@ -353,7 +353,7 @@ num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
-Draw waterfall plot (choose baseline as mean CATE)
+Draw a waterfall plot (choose baseline as mean CATE)
 ```
 p.waterfall <- waterfall.svcf.sficf(svcf = svcf.sficf.out$svcf,
 X = ecigarette$X, i = 1, k = 20, base.value = mean(tau))
@@ -423,7 +423,7 @@ num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
-Draw bar plot
+Draw a bar plot
 ```
 p.bar <- bar.sficf(sficf = svcf.sficf.out$sficf, k = 20)
 p.bar
