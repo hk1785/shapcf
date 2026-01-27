@@ -44,7 +44,7 @@ install_github("hk1785/shapcf", force = TRUE)
 
 ### 1. Main Functions
 * :mag: **`catecf`**: Estimates conditional average treatment effects (**CATEs**) using causal forests.
-* :mag: **`svcf.sficf`**: Computes **SVCF** (a local contribution measure that characterizes the directional contribution of each feature to an individual’s treatment effect) and **SFICF** (a global feature importance measure that extends SVCF to quantify feature importance at the cohort level
+* :mag: **`svcf.sficf`**: Computes **SVCF** (a local contribution measure that characterizes the directional contribution of each feature to an individual’s treatment effect) and **SFICF** (a global feature importance measure that extends SVCF to quantify feature importance at the cohort level).
 
 ### 2. Visualization Tools
 * :mag: **`beeswarm.svcf.sficf`**: Summary (**Beeswarm**) plot visualizing the distribution of feature contributions.
