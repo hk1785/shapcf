@@ -96,7 +96,7 @@ results.
 A list with the following components:
 \item{svcf}{An \code{n \times p} numeric matrix of Shapley values representing
 local feature contributions for each observation.}
-\item{sficf}{A numeric vector of length \code{p} containing normalized global
+\item{sficf}{A numeric vector of length \code{p} containing global
 feature importance scores.}
 \item{tau}{The input vector of estimated CATEs.}
 \item{res}{A data frame summarizing out-of-bag tuning results when
