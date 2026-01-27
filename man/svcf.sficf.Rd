@@ -103,6 +103,11 @@ feature importance scores.}
 \code{tune.oob = TRUE}; \code{NULL} otherwise.}
 }
 \references{
+Shapley, L. S. (1953).
+\emph{A value for n-person games}.
+In \emph{Contributions to the Theory of Games}, Vol.~2, 307--317.
+Princeton University Press, Princeton, NJ.
+
 Wager, S. and Athey, S. (2018).
 \emph{Estimation and inference of heterogeneous treatment effects using random forests}.
 Journal of the American Statistical Association, \bold{113}(523), 1228--1242.

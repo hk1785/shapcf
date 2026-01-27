@@ -10,9 +10,9 @@ Author: Hyunwook Koh
 
 Maintainer: Hyunwook Koh <hyunwook.koh@stonybrook.edu>
 
-Description: This R package provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Values for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. The package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
+Description: This R package (shapcf) provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Values for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. This package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
 
-Depends: R(>= 4.4.1), grf, ranger, treeshap, ggplot2, ggbeeswarm
+Depends: R(>= 4.5.2), grf, ranger, treeshap, ggplot2, ggbeeswarm
 
 License: GPL-3
 
@@ -44,7 +44,7 @@ install_github("hk1785/shapcf", force = TRUE)
 
 ### 1. Main Functions
 * :mag: **`catecf`**: Estimates conditional average treatment effects (**CATEs**) using causal forests.
-* :mag: **`svcf.sficf`**: Computes **SVCF** (a local contribution measure that characterizes the directional contribution of each feature to an individual’s treatment effect) and **SFICF** (a global feature importance measure that extends SVCF to quantify feature importance at the cohort level).
+* :mag: **`svcf.sficf`**: Computes (1) **SVCF** (a local contribution measure that characterizes the directional contribution of each feature to an individual’s treatment effect); and (2) **SFICF** (a global feature importance measure that extends SVCF to quantify feature importance at the cohort level).
 
 ### 2. Visualization Tools
 * :mag: **`beeswarm.svcf.sficf`**: Summary (**Beeswarm**) plot visualizing the distribution of feature contributions.
@@ -69,8 +69,8 @@ Estimates conditional average treatment effects (CATEs) using causal forests.
 
 ### Syntax
 ```
-catecf(Y, X, W, num.trees = 3000, num.rep = 1, seed = NULL,
-tune.parameters = "all", compute.oob.predictions = TRUE, ...)
+catecf(Y, X, W, num.trees = 3000, num.rep = 1, seed = NULL, 
+       tune.parameters = "all", compute.oob.predictions = TRUE, ...)
 ```
 
 ### Arguments
@@ -85,7 +85,7 @@ tune.parameters = "all", compute.oob.predictions = TRUE, ...)
 * _..._ - Additional arguments passed to `grf::causal_forest`.
 
 ### Values
-A numeric vector of length n containing estimated CATEs for each observation.
+A numeric vector of length _n_ containing estimated CATEs.
 
 ### Practical Recommendation
 As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of num.trees = 30000 and num.rep = 30 with a fixed seed, can be used to obtain more stable and reproducible results.
@@ -114,12 +114,12 @@ More Details
 ## :mag: svcf.sficf
 
 ### Description
-Using the estimated CATEs from \code{catecf}, computes (1) SVCF, a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF, a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. 
+Using the estimated CATEs from `catecf`, computes (1) SVCF, a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF, a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. 
 
 ### Syntax
 ```
 svcf.sficf(tau, X, num.trees = 3000, num.trees.tune = 3000, num.rep = 1,
-tune.oob = TRUE, mtry = NULL, min.node.size = NULL, seed = NULL, ...)
+           tune.oob = TRUE, mtry = NULL, min.node.size = NULL, seed = NULL, ...)
 ```
 
 ### Arguments
@@ -195,22 +195,22 @@ Creates a SHAP-style summary (beeswarm) plot for SVCF values, with points colore
 ### Syntax
 ```
 beeswarm.svcf.sficf(svcf, sficf, X, k = 10,
-title = NULL, xlab = "SVCF",
-point.size = 1.6, point.alpha = 0.55,
-low.col = "#0052A5", high.col = "#DC2626",
-qlims = c(0.05, 0.95), color.alpha = 0.60,
-legend.position = "bottom",
-legend.direction = "horizontal",
-legend.barwidth = grid::unit(170, "pt"),
-legend.barheight = grid::unit(10, "pt"),
-legend.text.size = 9,
-legend.title.size = 9,
-axis.title.x.size = 11,
-axis.text.x.size = 10,
-axis.text.y.size = 12,
-plot.title.size = 16,
-left.margin = 8,
-margin.t = 6, margin.r = 6, margin.b = 6)
+                    title = NULL, xlab = "SVCF",
+                    point.size = 1.6, point.alpha = 0.55,
+                    low.col = "#0052A5", high.col = "#DC2626",
+                    qlims = c(0.05, 0.95), color.alpha = 0.60,
+                    legend.position = "bottom",
+                    legend.direction = "horizontal",
+                    legend.barwidth = grid::unit(170, "pt"),
+                    legend.barheight = grid::unit(10, "pt"),
+                    legend.text.size = 9,
+                    legend.title.size = 9,
+                    axis.title.x.size = 11,
+                    axis.text.x.size = 10,
+                    axis.text.y.size = 12,
+                    plot.title.size = 16,
+                    left.margin = 8,
+                    margin.t = 6, margin.r = 6, margin.b = 6)
 ```
 
 ### Arguments
@@ -288,14 +288,14 @@ Creates a SHAP-style force (waterfall) plot that provides a local explanation of
 ### Syntax
 ```
 waterfall.svcf.sficf(svcf, X = NULL, i = 1, k = 10, base.value = 0,
-title = NULL, xlab = "Treatment Effect (Cumulative)",
-pos.col = "#E07A00", neg.col = "#10978F",
-rect.alpha = 0.85, seg.alpha = 0.8, seg.size = 0.9,
-rect.h = 0.35, base.linetype = "dashed", base.alpha = 0.5,
-digits = 3, value.digits = 5, value.thresh = 1e-05,
-plot.title.size = 15, axis.title.x.size = 10,
-axis.text.x.size = 10, axis.text.y.size = 12,
-left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
+                     title = NULL, xlab = "Treatment Effect (Cumulative)",
+                     pos.col = "#E07A00", neg.col = "#10978F",
+                     rect.alpha = 0.85, seg.alpha = 0.8, seg.size = 0.9,
+                     rect.h = 0.35, base.linetype = "dashed", base.alpha = 0.5,
+                     digits = 3, value.digits = 5, value.thresh = 1e-05,
+                     plot.title.size = 15, axis.title.x.size = 10,
+                     axis.text.x.size = 10, axis.text.y.size = 12,
+                     left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
 ```
 
 ### Arguments
@@ -454,9 +454,9 @@ A list with three components:
 * _X_ - A data frame of relative abundances for `p = 71` subgingival microbial genera and `n = 197` participants.
 
 ### References
-Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of the oral microbiome in saliva and subgingival sites between e-cigarette smoking and gingival inflammation_. BMC Microbiology, 23, 35. doi:10.1186/s12866-023-02779-z.
+* Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of the oral microbiome in saliva and subgingival sites between e-cigarette smoking and gingival inflammation_. BMC Microbiology, 23, 35. doi:10.1186/s12866-023-02779-z.
 
-Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
 ### More Details
 ```
@@ -480,9 +480,9 @@ A list with three components:
 * _X_ - A data frame of relative abundances for `p = 29` gut microbial genera and `n = 521` observations.
 
 ### References
-Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acceleration of type 1 diabetes alters maturation of innate intestinal immunity_. eLife, 7, e37816.
+* Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acceleration of type 1 diabetes alters maturation of innate intestinal immunity_. eLife, 7, e37816.
 
-Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
 ### More Details
 ```
@@ -506,9 +506,9 @@ A list with three components:
 * _X_ - A data frame of relative abundances for `p = 119` gut microbial genera and `n = 255` patients.
 
 ### References
-Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis of the gut microbiota in predicting response to cancer immunotherapy in metastatic melanoma_. JCI Insight, 5(23), e140940.
+* Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis of the gut microbiota in predicting response to cancer immunotherapy in metastatic melanoma_. JCI Insight, 5(23), e140940.
 
-Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
 ### More Details
 ```
