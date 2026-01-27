@@ -438,7 +438,7 @@ Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of th
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
-More Details
+### More Details
 ```
 ?ecigarette
 ```
@@ -464,7 +464,7 @@ Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acc
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
-More Details
+### More Details
 ```
 ?antibiotic
 ```
@@ -490,7 +490,7 @@ Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
-More Details
+### More Details
 ```
 ?immuno
 ```

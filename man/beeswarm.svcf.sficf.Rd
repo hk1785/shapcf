@@ -29,7 +29,7 @@ beeswarm.svcf.sficf(svcf, sficf, X, k = 10,
 }
 \arguments{
   \item{svcf}{
-An \code{n \times p} numeric matrix (or data frame) of SVCF, typically
+An \code{n x p} numeric matrix (or data frame) of SVCF, typically
 from \code{\link{svcf.sficf}}. Columns should correspond to features.
 }
 \item{sficf}{

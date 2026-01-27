@@ -94,7 +94,7 @@ results.
 }
 \value{
 A list with the following components:
-\item{svcf}{An \code{n \times p} numeric matrix of Shapley values representing
+\item{svcf}{An \code{n x p} numeric matrix of Shapley values representing
 local feature contributions for each observation.}
 \item{sficf}{A numeric vector of length \code{p} containing global
 feature importance scores.}
