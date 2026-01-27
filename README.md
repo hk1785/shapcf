@@ -1,4 +1,4 @@
-# $\color{blue}{shapcf}$
+# +shapcf
 
 Title: Principled Feature Importance and Explanations for Causal Forests via Shapley Values
 
