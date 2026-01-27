@@ -41,7 +41,7 @@ install_github("hk1785/shapcf", force = TRUE)
 ## 📋 Table of Contents
 
 ### 1. Main Functions
-* :mag: [**`catecf`**](#mag-catecf): Estimates conditional average treatment effects (**CATEs**) using causal forests.
+* :mag: **`catecf`**(#mag-catecf): Estimates conditional average treatment effects (**CATEs**) using causal forests.
 * :mag: **`svcf.sficf`**(#mag-svcfsficf): Computes local (**SVCF**) and global (**SFICF**) Shapley values for feature attribution.
 
 ### 2. Visualization Tools
@@ -58,7 +58,7 @@ install_github("hk1785/shapcf", force = TRUE)
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-# 1. Main Functions
+## 1. Main Functions
 
 ## :mag: catecf
 
@@ -183,7 +183,7 @@ More Details
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-# 2. Visualization Tools
+## 2. Visualization Tools
 
 ## :mag: beeswarm.svcf.sficf
 
@@ -433,7 +433,7 @@ More Details
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-# 3. Example Datasets
+## 3. Example Datasets
 
 ## :mag: ecigarette
 
