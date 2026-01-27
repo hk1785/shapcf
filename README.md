@@ -372,10 +372,10 @@ Creates a horizontal bar plot of the top `k` features ranked by SFICF (global fe
 ### Syntax
 ```
 bar.sficf(sficf, k = 10, title = NULL, xlab = "Feature Importance",
-bar.col = "#6B7280", bar.alpha = 0.9, bar.width = 0.7,
-base.size = 12, plot.title.size = 12,
-axis.title.x.size = 11, axis.text.x.size = 10, axis.text.y.size = 11,
-left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
+          bar.col = "#6B7280", bar.alpha = 0.9, bar.width = 0.7,
+          base.size = 12, plot.title.size = 12,
+          axis.title.x.size = 11, axis.text.x.size = 10, axis.text.y.size = 11,
+          left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
 ```
 
 ### Arguments
