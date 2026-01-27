@@ -98,10 +98,8 @@ Computes Shapley-based explanations for causal forests using estimated CATEs. Sp
 
 ### Syntax
 ```
-svcf.sficf(tau, X,
-num.trees = 3000, num.trees.tune = 3000, num.rep = 1,
-tune.oob = TRUE, mtry = NULL, min.node.size = NULL,
-seed = NULL, ...)
+svcf.sficf(tau, X, num.trees = 3000, num.trees.tune = 3000, num.rep = 1,
+tune.oob = TRUE, mtry = NULL, min.node.size = NULL, seed = NULL, ...)
 ```
 
 ### Arguments
