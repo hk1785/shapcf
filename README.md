@@ -41,20 +41,20 @@ install_github("hk1785/shapcf", force = TRUE)
 ## 📋 Table of Contents
 
 ### 1. Main Functions
-* [:mag: **`catecf`**](#mag-catecf): Estimates **Conditional Average Treatment Effects (CATEs)** using causal forests.
-* [:mag: **`svcf.sficf`**](#mag-svcfsficf): Computes **local (SVCF)** and **global (SFICF)** Shapley values for feature attribution.
+* :mag: [**`catecf`**](#mag-catecf): Estimates conditional average treatment effects (**CATEs**) using causal forests.
+* :mag: **`svcf.sficf`**(#mag-svcfsficf): Computes local (**SVCF**) and global (**SFICF**) Shapley values for feature attribution.
 
 ### 2. Visualization Tools
-* [:mag: **`beeswarm.svcf.sficf`**](#mag-beeswarmsvcfsficf): Summary (**Beeswarm**) plot visualizing the distribution of feature impacts.
+* :mag: **`beeswarm.svcf.sficf`**(#mag-beeswarmsvcfsficf): Summary (**Beeswarm**) plot visualizing the distribution of feature impacts.
 
-* [:mag: **`waterfall.svcf.sficf`**](#mag-waterfallsvcfsficf): Force (**Waterfall**) plot providing local explanations for individual observations.
+* :mag: **`waterfall.svcf.sficf`**(#mag-waterfallsvcfsficf): Force (**Waterfall**) plot providing local explanations for individual observations.
 
-* [:mag: **`bar.sficf`**](#mag-barsficf): Importance (**Bar**) plot ranking features by global importance scores.
+* :mag: **`bar.sficf`**(#mag-barsficf): Importance (**Bar**) plot ranking features by global importance scores.
 
 ### 3. Example Datasets
-* [:mag: **`ecigarette`**](#mag-ecigarette): Subgingival microbiome data on e-cigarette use and gingival inflammation.
-* [:mag: **`antibiotic`**](#mag-antibiotic): Gut microbiome data regarding antibiotic treatment and type 1 diabetes.
-* [:mag: **`immuno`**](#mag-immuno): Gut microbiome data on cancer immunotherapy response in melanoma patients.
+* :mag: **`ecigarette`**(#mag-ecigarette): Subgingival microbiome data on e-cigarette use and gingival inflammation.
+* :mag: **`antibiotic`**(#mag-antibiotic): Gut microbiome data on antibiotic treatment and type 1 diabetes.
+* :mag: **`immuno`**(#mag-immuno): Gut microbiome data on cancer immunotherapy response in melanoma patients.
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
