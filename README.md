@@ -84,7 +84,7 @@ Estimate CATEs
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
               num.rep = 2, seed = 123)
-head(tau)
+tau
 ```
 More Details
 ```
@@ -129,7 +129,7 @@ seed = NULL, ...)
 A list with the following components:
 * _svcf_ - An _n × p_ numeric matrix of SVCF values representing local feature
   contributions for each observation.
-* _sficf_ - A named numeric vector of length _p_ containing normalized global
+* _sficf_ - A named numeric vector of length _p_ containing global
   feature importance scores.
 * _tau_ - The input vector of estimated CATEs.
 * _res_ - A data frame summarizing out-of-bag tuning results when `tune.oob = TRUE`
@@ -158,7 +158,7 @@ num.rep = 2, seed = 123)
 svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
 num.rep = 2, seed = 123)
 
-names(svcf.sficf.out)
+str(svcf.sficf.out)
 ```
 More Details
 ```
@@ -257,6 +257,10 @@ sficf = svcf.sficf.out$sficf,
 X = ecigarette$X, k = 20)
 p.beeswarm
 ```
+More Details
+```
+?beeswarm.svcf.sficf
+```
 
 ## :mag: waterfall.svcf.sficf
 
@@ -334,10 +338,12 @@ names(svcf.sficf.out)
 Draw waterfall plot (choose baseline as mean CATE)
 ```
 p.waterfall <- waterfall.svcf.sficf(svcf = svcf.sficf.out$svcf,
-X = ecigarette$X,
-i = 1, k = 10,
-base.value = mean(tau))
+X = ecigarette$X, i = 1, k = 20, base.value = mean(tau))
 p.waterfall
+```
+More Details
+```
+?waterfall.svcf.sficf
 ```
 
 ## :mag: bar.sficf
@@ -404,6 +410,11 @@ Draw bar plot
 p.bar <- bar.sficf(sficf = svcf.sficf.out$sficf, k = 20)
 p.bar
 ```
+More Details
+```
+?bar.sficf
+```
+
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 # Example Datasets
@@ -429,6 +440,11 @@ Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of th
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
+More Details
+```
+?ecigarette
+```
+
 ## :mag: antibiotic
 
 ### Description
@@ -449,6 +465,11 @@ A list with three components:
 Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acceleration of type 1 diabetes alters maturation of innate intestinal immunity_. eLife, 7, e37816.
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+
+More Details
+```
+?antibiotic
+```
 
 ## :mag: immuno
 
@@ -471,7 +492,10 @@ Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis
 
 Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
 
-
+More Details
+```
+?immuno
+```
 
 
 
