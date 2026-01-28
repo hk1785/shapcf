@@ -1,27 +1,28 @@
-waterfall.svcf.sficf <-
-function(svcf, X = NULL, i = 1, k = 10,
-                                 base.value = 0,
-                                 title = NULL,
-                                 xlab = "Treatment Effect (Cumulative)",
-                                 pos.col = "#E07A00",
-                                 neg.col = "#10978F",
-                                 rect.alpha = 0.85,
-                                 seg.alpha = 0.80,
-                                 seg.size = 0.9,
-                                 rect.h = 0.35,
-                                 base.linetype = "dashed",
-                                 base.alpha = 0.5,
-                                 digits = 3,
-                                 value.digits = 5,
-                                 value.thresh = 1e-5,
-                                 plot.title.size = 15,
-                                 axis.title.x.size = 10,
-                                 axis.text.x.size = 10,
-                                 axis.text.y.size = 12,
-                                 left.margin = 8,
-                                 margin.t = 6, margin.r = 6, margin.b = 6) {
+waterfall.svcf.cate <-
+function(svcf, tau, X = NULL, i = 1, k = 10,
+                                base.value = NULL,
+                                title = NULL,
+                                xlab = "Treatment Effect (Cumulative)",
+                                pos.col = "#E07A00",
+                                neg.col = "#10978F",
+                                rect.alpha = 0.85,
+                                seg.alpha = 0.80,
+                                seg.size = 0.9,
+                                rect.h = 0.35,
+                                base.linetype = "dashed",
+                                base.alpha = 0.5,
+                                digits = 3,
+                                value.digits = 5,
+                                value.thresh = 1e-5,
+                                plot.title.size = 15,
+                                axis.title.x.size = 10,
+                                axis.text.x.size = 10,
+                                axis.text.y.size = 12,
+                                left.margin = 8,
+                                margin.t = 6, margin.r = 6, margin.b = 6) {
   
-  ## ---- checks
+  if (is.null(base.value)) base.value <- mean(tau, na.rm = TRUE)
+  
   stopifnot(is.matrix(svcf) || is.data.frame(svcf))
   stopifnot(!is.null(colnames(svcf)))
   stopifnot(i >= 1, i == as.integer(i), i <= nrow(svcf))
@@ -39,7 +40,6 @@ function(svcf, X = NULL, i = 1, k = 10,
     if (is.null(colnames(X))) stop("If 'X' is provided, it must have column names.")
   }
   
-  ## ---- formatter for feature values
   fmt.value <- function(z) {
     if (is.na(z)) return(NA_character_)
     z2 <- round(as.numeric(z), value.digits + 1)
@@ -51,7 +51,6 @@ function(svcf, X = NULL, i = 1, k = 10,
     }
   }
   
-  ## ---- extract one observation
   s <- as.numeric(svcf[i, ])
   names(s) <- colnames(svcf)
   
@@ -72,7 +71,6 @@ function(svcf, X = NULL, i = 1, k = 10,
     )
   }
   
-  ## ---- attach feature values (optional)
   if (!is.null(X)) {
     xrow <- X[i, , drop = FALSE]
     df$value <- NA_real_

@@ -14,7 +14,7 @@ forests. The main workflow is:
 (1) estimate CATEs with \code{\link{catecf}},
 (2) compute SVCF/SFICF with \code{\link{svcf.sficf}},
 and (3) visualize results with \code{\link{beeswarm.svcf.sficf}},
-\code{\link{waterfall.svcf.sficf}}, and \code{\link{bar.sficf}}.
+\code{\link{waterfall.svcf.cate}}, and \code{\link{bar.sficf}}.
 }
 \author{
 \packageAuthor{shapcf}
@@ -27,6 +27,6 @@ Koh, H. (In Review).
 }
 \seealso{
 \code{\link{catecf}}, \code{\link{svcf.sficf}},
-\code{\link{beeswarm.svcf.sficf}}, \code{\link{waterfall.svcf.sficf}}, \code{\link{bar.sficf}}
+\code{\link{beeswarm.svcf.sficf}}, \code{\link{waterfall.svcf.cate}}, \code{\link{bar.sficf}}
 }
 \keyword{package}

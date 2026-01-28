@@ -1,5 +1,5 @@
-\name{waterfall.svcf.sficf}
-\alias{waterfall.svcf.sficf}
+\name{waterfall.svcf.cate}
+\alias{waterfall.svcf.cate}
 \title{
 Force (waterfall) plot for SVCF
 }
@@ -7,23 +7,27 @@ Force (waterfall) plot for SVCF
 Creates a SHAP-style force (waterfall) plot that provides a local explanation of
 feature contributions for a given individual \code{i}. The plot visualizes signed
 SVCF values as directional shifts that move the treatment effect from a global
-baseline (specified by \code{base.value}) to the individual-specific treatment effect.
+baseline to the individual-specific treatment effect.
 }
 \usage{
-waterfall.svcf.sficf(svcf, X = NULL, i = 1, k = 10, base.value = 0,
-                     title = NULL, xlab = "Treatment Effect (Cumulative)",
-                     pos.col = "#E07A00", neg.col = "#10978F",
-                     rect.alpha = 0.85, seg.alpha = 0.8, seg.size = 0.9,
-                     rect.h = 0.35, base.linetype = "dashed", base.alpha = 0.5,
-                     digits = 3, value.digits = 5, value.thresh = 1e-05,
-                     plot.title.size = 15, axis.title.x.size = 10,
-                     axis.text.x.size = 10, axis.text.y.size = 12,
-                     left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
+waterfall.svcf.cate(svcf, tau, X = NULL, i = 1, k = 10, 
+                    base.value = NULL, title = NULL, 
+					xlab = "Treatment Effect (Cumulative)", 
+                    pos.col = "#E07A00", neg.col = "#10978F", rect.alpha = 0.85, seg.alpha = 0.8, 
+                    seg.size = 0.9, rect.h = 0.35, base.linetype = "dashed", 
+                    base.alpha = 0.5, digits = 3, value.digits = 5, value.thresh = 1e-05, 
+                    plot.title.size = 15, axis.title.x.size = 10, axis.text.x.size = 10, 
+                    axis.text.y.size = 12, left.margin = 8, margin.t = 6, margin.r = 6, 
+					margin.b = 6)
 }
 \arguments{
   \item{svcf}{
 An \code{n \times p} numeric matrix (or data frame) of SVCF, typically
 from \code{\link{svcf.sficf}}. Columns should correspond to features.
+}
+  \item{tau}{
+A numeric vector of estimated CATEs 
+of length \code{n}, typically obtained from \code{\link{catecf}}.
 }
   \item{X}{
 Optional feature matrix/data frame with \code{n} rows and \code{p} columns.
@@ -42,10 +46,12 @@ A positive integer specifying the number of top features (by absolute SVCF)
 to display. Remaining features are aggregated into \code{"Other"}.
 (default: \code{k = 10})
 }
-  \item{base.value}{
-Baseline value from which contributions are accumulated. In applications, this is
-often chosen as the global average treatment effect, e.g.,
-\eqn{\frac{1}{n}\sum_{i=1}^n \hat{\tau}(x_i)}. (default: \code{base.value = 0})
+\item{base.value}{
+Baseline value from which feature contributions are accumulated. In practice, this is
+typically chosen as the global average treatment effect, for example
+\eqn{\frac{1}{n}\sum_{i=1}^n \hat{\tau}(x_i)}.
+The default setting is \code{base.value = NULL}, in which case
+\code{base.value} is set to \code{mean(tau)}.
 }
   \item{title}{
 Optional plot title. If \code{NULL}, no title is displayed. (default: \code{title = NULL})
@@ -157,8 +163,8 @@ tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
 
 svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X, num.rep = 2, seed = 123)
 
-waterfall.out <- waterfall.svcf.sficf(svcf = svcf.sficf.out$svcf,
-                                      X = ecigarette$X, i = 1, k = 20,
-                                      base.value = mean(tau))
+waterfall.out <- waterfall.svcf.cate(svcf = svcf.sficf.out$svcf, tau = tau,
+                                     X = ecigarette$X, i = 1, k = 20)
 waterfall.out
 }
+

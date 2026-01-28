@@ -49,7 +49,7 @@ install_github("hk1785/shapcf", force = TRUE)
 ### 2. Visualization Tools
 * :mag: **`beeswarm.svcf.sficf`**: Summary (**Beeswarm**) plot visualizing the distribution of feature contributions.
 
-* :mag: **`waterfall.svcf.sficf`**: Force (**Waterfall**) plot providing local explanations for a given individual.
+* :mag: **`waterfall.svcf.cate`**: Force (**Waterfall**) plot providing local explanations for a given individual.
 
 * :mag: **`bar.sficf`**: Importance (**Bar**) plot ranking features by global importance scores.
 
@@ -96,7 +96,7 @@ Import requisite R packages
 library(grf)
 library(shapcf)
 ```
-Example Data: Oral microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
 ```
 data(ecigarette)
 ```
@@ -164,7 +164,7 @@ library(ranger)
 library(treeshap)
 library(shapcf)
 ```
-Example Data: Oral microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
 ```
 data(ecigarette)
 ```
@@ -254,7 +254,7 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Oral microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
 ```
 data(ecigarette)
 ```
@@ -280,30 +280,31 @@ More Details
 ?beeswarm.svcf.sficf
 ```
 
-## :mag: waterfall.svcf.sficf
+## :mag: waterfall.svcf.cate
 
 ### Description
 Creates a SHAP-style force (waterfall) plot that provides a local explanation of feature contributions for a given individual `i`. The plot visualizes signed SVCF values as directional shifts that move the treatment effect from a global baseline (`base.value`) to the individual-specific treatment effect.
 
 ### Syntax
 ```
-waterfall.svcf.sficf(svcf, X = NULL, i = 1, k = 10, base.value = 0,
-                     title = NULL, xlab = "Treatment Effect (Cumulative)",
-                     pos.col = "#E07A00", neg.col = "#10978F",
-                     rect.alpha = 0.85, seg.alpha = 0.8, seg.size = 0.9,
-                     rect.h = 0.35, base.linetype = "dashed", base.alpha = 0.5,
-                     digits = 3, value.digits = 5, value.thresh = 1e-05,
-                     plot.title.size = 15, axis.title.x.size = 10,
-                     axis.text.x.size = 10, axis.text.y.size = 12,
-                     left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
+waterfall.svcf.cate(svcf, tau, X = NULL, i = 1, k = 10, base.value = NULL,
+                    title = NULL, xlab = "Treatment Effect (Cumulative)",
+                    pos.col = "#E07A00", neg.col = "#10978F",
+                    rect.alpha = 0.85, seg.alpha = 0.8, seg.size = 0.9,
+                    rect.h = 0.35, base.linetype = "dashed", base.alpha = 0.5,
+                    digits = 3, value.digits = 5, value.thresh = 1e-05,
+                    plot.title.size = 15, axis.title.x.size = 10,
+                    axis.text.x.size = 10, axis.text.y.size = 12,
+                    left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
 ```
 
 ### Arguments
 * _svcf_ - An _n × p_ numeric matrix (or data frame) of SVCF values, typically from `svcf.sficf`. Columns should correspond to features.
+* _tau_ - A numeric vector of estimated CATEs of length _n_, typically obtained from `catecf`.
 * _X_ - Optional feature matrix/data frame with _n_ rows and _p_ columns. If provided, feature values for individual `i` are shown in parentheses in the y-axis labels (excluding `"Other"`).
 * _i_ - Index of the observation to explain (Default: 1).
 * _k_ - Number of top features (by absolute SVCF) to display; remaining features are aggregated into `"Other"` (Default: 10).
-* _base.value_ - Baseline value from which contributions are accumulated. In applications, this is often chosen as the global average treatment effect, e.g., `mean(tau)` (Default: 0).
+* _base.value_ - Baseline value from which feature contributions are accumulated. In practice, this is typically chosen as the global average treatment effect, for example $\frac{1}{n}\sum_{i=1}^n \hat{\tau}(x_i)$. The default setting is _base.value = NULL_, in which case _base.value_ is set to _mean(tau)_.
 * _title_ - Optional plot title (Default: `NULL`).
 * _xlab_ - Label for the x-axis (Default: `"Treatment Effect (Cumulative)"`).
 * _pos.col_ - Fill color for positive contributions (Default: `"#E07A00"`).
@@ -339,7 +340,7 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Oral microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
 ```
 data(ecigarette)
 ```
@@ -353,15 +354,15 @@ num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
-Draw a waterfall plot (choose baseline as mean CATE)
+Draw a waterfall plot
 ```
-p.waterfall <- waterfall.svcf.sficf(svcf = svcf.sficf.out$svcf,
-X = ecigarette$X, i = 1, k = 20, base.value = mean(tau))
+p.waterfall <- waterfall.svcf.cate(svcf = svcf.sficf.out$svcf, tau = tau
+                                   X = ecigarette$X, i = 1, k = 20)
 p.waterfall
 ```
 More Details
 ```
-?waterfall.svcf.sficf
+?waterfall.svcf.cate
 ```
 
 ## :mag: bar.sficf
@@ -409,7 +410,7 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Oral microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
 ```
 data(ecigarette)
 ```

@@ -1,1 +1,1 @@
-export("bar.sficf", "beeswarm.svcf.sficf", "catecf", "svcf.sficf", "waterfall.svcf.sficf")
+export("bar.sficf", "beeswarm.svcf.sficf", "catecf", "svcf.sficf", "waterfall.svcf.cate")
