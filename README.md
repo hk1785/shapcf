@@ -18,7 +18,7 @@ License: GPL-3
 
 ## Reference
 
-* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. _Principled Feature Importance and Explanations for Causal Forests via Shapley Values._ (_In Review_)
 
 ## Troubleshooting Tips
 
@@ -436,7 +436,7 @@ A list with three components:
 ### References
 * Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of the oral microbiome in saliva and subgingival sites between e-cigarette smoking and gingival inflammation_. BMC Microbiology, 23, 35. doi:10.1186/s12866-023-02779-z.
 
-* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. _Principled Feature Importance and Explanations for Causal Forests via Shapley Values._ (_In Review_)
 
 ### More Details
 ```
@@ -462,7 +462,7 @@ A list with three components:
 ### References
 * Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acceleration of type 1 diabetes alters maturation of innate intestinal immunity_. eLife, 7, e37816.
 
-* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. _Principled Feature Importance and Explanations for Causal Forests via Shapley Values._ (_In Review_)
 
 ### More Details
 ```
@@ -488,7 +488,7 @@ A list with three components:
 ### References
 * Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis of the gut microbiota in predicting response to cancer immunotherapy in metastatic melanoma_. JCI Insight, 5(23), e140940.
 
-* Koh H. Principled Feature Importance and Explanations for Causal Forests via Shapley Values. (_In Review_)
+* Koh H. _Principled Feature Importance and Explanations for Causal Forests via Shapley Values._ (_In Review_)
 
 ### More Details
 ```
