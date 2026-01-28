@@ -190,27 +190,18 @@ More Details
 ## :mag: beeswarm.svcf.sficf
 
 ### Description
-Creates a SHAP-style summary (beeswarm) plot for SVCF values, with points colored by the corresponding feature values in `X`.   Features are ordered by `sficf`, and the top `k` features are displayed.
+Creates a SHAP-style summary (beeswarm) plot for SVCF values, with points colored by the corresponding feature values in _X_.   Features are ordered by _sficf_, and the top _k_ features are displayed.
 
 ### Syntax
 ```
-beeswarm.svcf.sficf(svcf, sficf, X, k = 10,
-                    title = NULL, xlab = "SVCF",
-                    point.size = 1.6, point.alpha = 0.55,
-                    low.col = "#0052A5", high.col = "#DC2626",
+beeswarm.svcf.sficf(svcf, sficf, X, k = 10, title = NULL, xlab = "SVCF",
+                    point.size = 1.6, point.alpha = 0.55, low.col = "#0052A5", high.col = "#DC2626",
                     qlims = c(0.05, 0.95), color.alpha = 0.60,
-                    legend.position = "bottom",
-                    legend.direction = "horizontal",
-                    legend.barwidth = grid::unit(170, "pt"),
-                    legend.barheight = grid::unit(10, "pt"),
-                    legend.text.size = 9,
-                    legend.title.size = 9,
-                    axis.title.x.size = 11,
-                    axis.text.x.size = 10,
-                    axis.text.y.size = 12,
-                    plot.title.size = 16,
-                    left.margin = 8,
-                    margin.t = 6, margin.r = 6, margin.b = 6)
+                    legend.position = "bottom", legend.direction = "horizontal",
+                    legend.barwidth = grid::unit(170, "pt"), legend.barheight = grid::unit(10, "pt"),
+                    legend.text.size = 9, legend.title.size = 9,
+                    axis.title.x.size = 11, axis.text.x.size = 10, axis.text.y.size = 12,
+                    plot.title.size = 16, left.margin = 8, margin.t = 6, margin.r = 6, margin.b = 6)
 ```
 
 ### Arguments
@@ -224,7 +215,7 @@ beeswarm.svcf.sficf(svcf, sficf, X, k = 10,
 * _point.alpha_ - Point transparency in _[0,1]_ (Default: 0.55).
 * _low.col_ - Low-end color for feature value gradient (Default: _"#0052A5"_).
 * _high.col_ - High-end color for feature value gradient (Default: _"#DC2626"_).
-* _qlims_ - Quantile limits in _[0,1]_ for truncating the color scale (Default: `c(0.05, 0.95)`).
+* _qlims_ - Quantile limits in _[0,1]_ for truncating the color scale (Default: _c(0.05, 0.95)_).
 * _color.alpha_ - Alpha applied to the gradient colors via `adjustcolor()` (Default: 0.60).
 * _legend.position_ - Legend position passed to `ggplot2::theme()` (Default: _"bottom"_).
 * _legend.direction_ - Legend direction passed to `ggplot2::guide_colorbar()` (Default: _"horizontal"_).
@@ -283,7 +274,7 @@ More Details
 ## :mag: waterfall.svcf.cate
 
 ### Description
-Creates a SHAP-style force (waterfall) plot that provides a local explanation of feature contributions for a given individual `i`. The plot visualizes signed SVCF values as directional shifts that move the treatment effect from a global baseline (`base.value`) to the individual-specific treatment effect.
+Creates a SHAP-style force (waterfall) plot that provides a local explanation of feature contributions for a given individual _i_. The plot visualizes signed SVCF values as directional shifts that move the treatment effect from a global baseline (_base.value_) to the individual-specific treatment effect.
 
 ### Syntax
 ```
@@ -301,23 +292,23 @@ waterfall.svcf.cate(svcf, tau, X = NULL, i = 1, k = 10, base.value = NULL,
 ### Arguments
 * _svcf_ - An _n × p_ numeric matrix (or data frame) of SVCF values, typically from `svcf.sficf`. Columns should correspond to features.
 * _tau_ - A numeric vector of estimated CATEs of length _n_, typically obtained from `catecf`.
-* _X_ - Optional feature matrix/data frame with _n_ rows and _p_ columns. If provided, feature values for individual `i` are shown in parentheses in the y-axis labels (excluding `"Other"`).
+* _X_ - Optional feature matrix/data frame with _n_ rows and _p_ columns. If provided, feature values for individual _i_ are shown in parentheses in the y-axis labels (excluding _"Other"_).
 * _i_ - Index of the observation to explain (Default: 1).
-* _k_ - Number of top features (by absolute SVCF) to display; remaining features are aggregated into `"Other"` (Default: 10).
+* _k_ - Number of top features (by absolute SVCF) to display; remaining features are aggregated into _"Other"_ (Default: 10).
 * _base.value_ - Baseline value from which feature contributions are accumulated. In practice, this is typically chosen as the global average treatment effect, for example $\frac{1}{n}\sum_{i=1}^n \hat{\tau}(x_i)$. The default setting is _base.value = NULL_, in which case _base.value_ is set to _mean(tau)_.
-* _title_ - Optional plot title (Default: `NULL`).
-* _xlab_ - Label for the x-axis (Default: `"Treatment Effect (Cumulative)"`).
-* _pos.col_ - Fill color for positive contributions (Default: `"#E07A00"`).
-* _neg.col_ - Fill color for negative contributions (Default: `"#10978F"`).
-* _rect.alpha_ - Alpha for contribution rectangles in `[0,1]` (Default: 0.85).
-* _seg.alpha_ - Alpha for connecting segments in `[0,1]` (Default: 0.8).
+* _title_ - Optional plot title (Default: _NULL_).
+* _xlab_ - Label for the x-axis (Default: _"Treatment Effect (Cumulative)"_).
+* _pos.col_ - Fill color for positive contributions (Default: _"#E07A00"_).
+* _neg.col_ - Fill color for negative contributions (Default: _"#10978F"_).
+* _rect.alpha_ - Alpha for contribution rectangles in _[0,1]_ (Default: 0.85).
+* _seg.alpha_ - Alpha for connecting segments in _[0,1]_ (Default: 0.8).
 * _seg.size_ - Line width for connecting segments (Default: 0.9).
 * _rect.h_ - Half-height of the contribution rectangles (Default: 0.35).
-* _base.linetype_ - Line type for baseline reference line (Default: `"dashed"`).
-* _base.alpha_ - Alpha for baseline reference line in `[0,1]` (Default: 0.5).
+* _base.linetype_ - Line type for baseline reference line (Default: _"dashed"_).
+* _base.alpha_ - Alpha for baseline reference line in _[0,1]_ (Default: 0.5).
 * _digits_ - Digits for x-axis tick labels (Default: 3).
-* _value.digits_ - Digits for feature values in labels when `X` is provided (Default: 5).
-* _value.thresh_ - Threshold below which feature values are shown as `<value.thresh` (Default: 1e-05).
+* _value.digits_ - Digits for feature values in labels when _X_ is provided (Default: 5).
+* _value.thresh_ - Threshold below which feature values are shown as _<value.thresh_ (Default: 1e-05).
 * _plot.title.size_ - Plot title size (Default: 15).
 * _axis.title.x.size_ - X-axis title size (Default: 10).
 * _axis.text.x.size_ - X-axis tick label size (Default: 10).
@@ -368,7 +359,7 @@ More Details
 ## :mag: bar.sficf
 
 ### Description
-Creates a horizontal bar plot of the top `k` features ranked by SFICF (global feature importance) scores.
+Creates a horizontal bar plot of the top _k_ features ranked by SFICF (global feature importance) scores.
 
 ### Syntax
 ```
@@ -382,10 +373,10 @@ bar.sficf(sficf, k = 10, title = NULL, xlab = "Feature Importance",
 ### Arguments
 * _sficf_ - A named numeric vector of length _p_ containing SFICF scores, typically from `svcf.sficf`.
 * _k_ - Number of top features to display (Default: 10).
-* _title_ - Optional plot title (Default: `NULL`).
-* _xlab_ - Label for the x-axis (Default: `"Feature Importance"`).
-* _bar.col_ - Fill color for bars (Default: `"#6B7280"`).
-* _bar.alpha_ - Bar transparency in `[0,1]` (Default: 0.9).
+* _title_ - Optional plot title (Default: _NULL_).
+* _xlab_ - Label for the x-axis (Default: _"Feature Importance"_).
+* _bar.col_ - Fill color for bars (Default: _"#6B7280"_).
+* _bar.alpha_ - Bar transparency in _[0,1]_ (Default: 0.9).
 * _bar.width_ - Bar width passed to `ggplot2::geom_col` (Default: 0.7).
 * _base.size_ - Base font size for `ggplot2::theme_bw` (Default: 12).
 * _plot.title.size_ - Plot title size (Default: 12).
@@ -452,7 +443,7 @@ data(ecigarette)
 A list with three components:
 * _Y_ - Binary outcome indicating gingival inflammation (0 = healthy, 1 = diseased).
 * _W_ - Binary exposure indicator (0 = non-use, 1 = e-cigarette use).
-* _X_ - A data frame of relative abundances for `p = 71` subgingival microbial genera and `n = 197` participants.
+* _X_ - A data frame of relative abundances for _p = 71_ subgingival microbial genera and _n = 197_ participants.
 
 ### References
 * Park, B., Koh, H., Patatanian, M., and others (2023). _The mediating roles of the oral microbiome in saliva and subgingival sites between e-cigarette smoking and gingival inflammation_. BMC Microbiology, 23, 35. doi:10.1186/s12866-023-02779-z.
@@ -478,7 +469,7 @@ data(antibiotic)
 A list with three components:
 * _Y_ - Binary outcome indicating type 1 diabetes onset (0 = healthy, 1 = diseased).
 * _W_ - Binary treatment indicator for antibiotic exposure (0 = control, 1 = treatment).
-* _X_ - A data frame of relative abundances for `p = 29` gut microbial genera and `n = 521` observations.
+* _X_ - A data frame of relative abundances for _p = 29_ gut microbial genera and _n = 521_ observations.
 
 ### References
 * Zhang, X. S., Li, J., Krautkramer, K. A., et al. (2018). _Antibiotic-induced acceleration of type 1 diabetes alters maturation of innate intestinal immunity_. eLife, 7, e37816.
@@ -504,7 +495,7 @@ data(immuno)
 A list with three components:
 * _Y_ - Binary outcome indicating clinical response (0 = non-response, 1 = response).
 * _W_ - Binary treatment indicator (0 = anti--PD-1 monotherapy, 1 = combined anti--PD-1/anti--CTLA-4 therapy).
-* _X_ - A data frame of relative abundances for `p = 119` gut microbial genera and `n = 255` patients.
+* _X_ - A data frame of relative abundances for _p = 119_ gut microbial genera and _n = 255_ patients.
 
 ### References
 * Limeta, A., Ji, B., Levin, M., Gatto, F., and Nielsen, J. (2020). _Meta-analysis of the gut microbiota in predicting response to cancer immunotherapy in metastatic melanoma_. JCI Insight, 5(23), e140940.
