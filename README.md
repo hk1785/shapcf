@@ -78,17 +78,17 @@ catecf(Y, X, W, num.trees = 3000, num.rep = 1, seed = NULL,
 * _X_ - A numeric matrix or data frame of covariates with _n_ rows and _p_ columns. Column names are treated as feature names and should be valid R identifiers (e.g., compatible with `make.names`).
 * _W_ - A treatment indicator vector of length _n_ (typically binary, e.g., 0/1).
 * _num.trees_ - Number of trees to grow in each causal forest fit (Default: 3000).
-* _num.rep_ - Number of repeated fits. If `num.rep > 1`, returns row-wise average CATEs (Default: 1).
+* _num.rep_ - Number of repeated fits. If _num.rep > 1_, returns row-wise average CATEs (Default: 1).
 * _seed_ - Optional integer seed for reproducibility.
-* _tune.parameters_ - Tuning option passed to `grf::causal_forest` (Default: `"all"`).
-* _compute.oob.predictions_ - Logical; whether to compute out-of-bag predictions (Default: `TRUE`).
+* _tune.parameters_ - Tuning option passed to `grf::causal_forest` (Default: _"all"_).
+* _compute.oob.predictions_ - Logical; whether to compute out-of-bag predictions (Default: _TRUE_).
 * _..._ - Additional arguments passed to `grf::causal_forest`.
 
 ### Values
 A numeric vector of length _n_ containing estimated CATEs.
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of num.trees = 30000 and num.rep = 30 with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 30_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages
@@ -96,7 +96,7 @@ Import requisite R packages
 library(grf)
 library(shapcf)
 ```
-Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (_In Review_) for details).
 ```
 data(ecigarette)
 ```
@@ -130,16 +130,16 @@ svcf.sficf(tau, X, num.trees = 3000, num.trees.tune = 3000, num.rep = 1,
 * _num.trees_ - Number of trees used to fit the final random forest model for computing
   Shapley values (Default: 3000).
 * _num.trees.tune_ - Number of trees used during out-of-bag tuning of hyperparameters.
-  Only used when `tune.oob = TRUE` (Default: 3000).
-* _num.rep_ - Number of repeated random forest fits. If `num.rep > 1`, SVCF and SFICF
+  Only used when _tune.oob = TRUE_ (Default: 3000).
+* _num.rep_ - Number of repeated random forest fits. If _num.rep > 1_, SVCF and SFICF
   are averaged across repetitions (Default: 1).
-* _tune.oob_ - Logical; whether to perform out-of-bag tuning over `mtry` and
-  `min.node.size`. If `FALSE` and both tuning parameters are `NULL`, the default
-  settings of `ranger::ranger` for continuous outcomes are used (Default: TRUE).
+* _tune.oob_ - Logical; whether to perform out-of-bag tuning over _mtry_ and
+  _min.node.size_. If _FALSE_ and both tuning parameters are _NULL_, the default
+  settings of `ranger::ranger` for continuous outcomes are used (Default: _TRUE_).
 * _mtry_ - Number of variables randomly selected as candidates at each split.
-  If `tune.oob = TRUE`, this can be a numeric vector specifying tuning candidates.
+  If _tune.oob = TRUE_, this can be a numeric vector specifying tuning candidates.
 * _min.node.size_ - Minimum number of observations in a terminal node.
-  If `tune.oob = TRUE`, this can be a numeric vector specifying tuning candidates.
+  If _tune.oob = TRUE_, this can be a numeric vector specifying tuning candidates.
 * _seed_ - Optional integer seed for reproducibility.
 * _..._ - Additional arguments passed to `ranger::ranger`.
 
@@ -150,11 +150,11 @@ A list with the following components:
 * _sficf_ - A named numeric vector of length _p_ containing global
   feature importance scores.
 * _tau_ - The input vector of estimated CATEs.
-* _res_ - A data frame summarizing out-of-bag tuning results when `tune.oob = TRUE`
-  (otherwise `NULL`).
+* _res_ - A data frame summarizing out-of-bag tuning results when _tune.oob = TRUE_
+  (otherwise _NULL_).
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of num.trees = 30000 and num.rep = 30 with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 30_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages
@@ -164,17 +164,17 @@ library(ranger)
 library(treeshap)
 library(shapcf)
 ```
-Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (_In Review_) for details).
 ```
 data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-num.rep = 2, seed = 123)
+              num.rep = 2, seed = 123)
 
 svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-num.rep = 2, seed = 123)
+                             num.rep = 2, seed = 123)
 
 str(svcf.sficf.out)
 ```
@@ -216,18 +216,18 @@ beeswarm.svcf.sficf(svcf, sficf, X, k = 10,
 ### Arguments
 * _svcf_ - An _n × p_ numeric matrix (or data frame) of SVCF values, typically from `svcf.sficf`. Columns should correspond to features.
 * _sficf_ - A named numeric vector of length _p_ containing SFICF scores, typically from `svcf.sficf`. Features are ranked by this vector.
-* _X_ - A numeric matrix or data frame of covariates with _n_ rows and _p_ columns. Column names must overlap with `colnames(svcf)` and are used for coloring.
-* _k_ - Number of top features (ranked by `sficf`) to display (Default: 10).
-* _title_ - Optional plot title (Default: `NULL`).
-* _xlab_ - Label for the x-axis (Default: `"SVCF"`).
+* _X_ - A numeric matrix or data frame of covariates with _n_ rows and _p_ columns. Column names must overlap with _colnames(svcf)_ and are used for coloring.
+* _k_ - Number of top features (ranked by _sficf_) to display (Default: 10).
+* _title_ - Optional plot title (Default: _NULL_).
+* _xlab_ - Label for the x-axis (Default: _"SVCF"_).
 * _point.size_ - Point size for the beeswarm layer (Default: 1.6).
-* _point.alpha_ - Point transparency in `[0,1]` (Default: 0.55).
-* _low.col_ - Low-end color for feature value gradient (Default: `"#0052A5"`).
-* _high.col_ - High-end color for feature value gradient (Default: `"#DC2626"`).
-* _qlims_ - Quantile limits in `[0,1]` for truncating the color scale (Default: `c(0.05, 0.95)`).
+* _point.alpha_ - Point transparency in _[0,1]_ (Default: 0.55).
+* _low.col_ - Low-end color for feature value gradient (Default: _"#0052A5"_).
+* _high.col_ - High-end color for feature value gradient (Default: _"#DC2626"_).
+* _qlims_ - Quantile limits in _[0,1]_ for truncating the color scale (Default: `c(0.05, 0.95)`).
 * _color.alpha_ - Alpha applied to the gradient colors via `adjustcolor()` (Default: 0.60).
-* _legend.position_ - Legend position passed to `ggplot2::theme()` (Default: `"bottom"`).
-* _legend.direction_ - Legend direction passed to `ggplot2::guide_colorbar()` (Default: `"horizontal"`).
+* _legend.position_ - Legend position passed to `ggplot2::theme()` (Default: _"bottom"_).
+* _legend.direction_ - Legend direction passed to `ggplot2::guide_colorbar()` (Default: _"horizontal"_).
 * _legend.barwidth_ - Width of colorbar as a `grid::unit` object (Default: `grid::unit(170, "pt")`).
 * _legend.barheight_ - Height of colorbar as a `grid::unit` object (Default: `grid::unit(10, "pt")`).
 * _legend.text.size_ - Legend text size (Default: 9).
@@ -254,25 +254,25 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (_In Review_) for details).
 ```
 data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-num.rep = 2, seed = 123)
+              num.rep = 2, seed = 123)
 
 svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-num.rep = 2, seed = 123)
+                             num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
 Draw a beeswarm plot
 ```
 p.beeswarm <- beeswarm.svcf.sficf(svcf = svcf.sficf.out$svcf,
-sficf = svcf.sficf.out$sficf,
-X = ecigarette$X, k = 20)
+                                  sficf = svcf.sficf.out$sficf,
+                                  X = ecigarette$X, k = 20)
 p.beeswarm
 ```
 More Details
@@ -340,7 +340,7 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (_In Review_) for details).
 ```
 data(ecigarette)
 ```
@@ -410,17 +410,17 @@ library(ggplot2)
 library(ggbeeswarm)
 library(shapcf)
 ```
-Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (In Review) for details).
+Example Data: Subgingival microbiome data on e-cigarette use and gingival inflammation (see Koh (_In Review_) for details).
 ```
 data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
 tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-num.rep = 2, seed = 123)
+              num.rep = 2, seed = 123)
 
 svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-num.rep = 2, seed = 123)
+                             num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
