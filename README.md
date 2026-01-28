@@ -88,7 +88,7 @@ catecf(Y, X, W, num.trees = 3000, num.rep = 1, seed = NULL,
 A numeric vector of length _n_ containing estimated CATEs.
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 30_ with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 10000_ and _num.rep = 20_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages
@@ -153,7 +153,7 @@ A list with the following components:
   (otherwise _NULL_).
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 30_ with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 10000_ and _num.rep = 10_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages
