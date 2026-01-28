@@ -102,8 +102,7 @@ data(ecigarette)
 ```
 Estimate CATEs
 ```
-tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-              num.rep = 2, seed = 123)
+tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W, num.rep = 2, seed = 123)
 tau
 ```
 More Details
@@ -170,11 +169,9 @@ data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
-tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-              num.rep = 2, seed = 123)
+tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W, num.rep = 2, seed = 123)
 
-svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-                             num.rep = 2, seed = 123)
+svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X, num.rep = 2, seed = 123)
 
 str(svcf.sficf.out)
 ```
@@ -251,19 +248,15 @@ data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
-tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-              num.rep = 2, seed = 123)
+tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W, num.rep = 2, seed = 123)
 
-svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-                             num.rep = 2, seed = 123)
+svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X, num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
 Draw a beeswarm plot
 ```
-p.beeswarm <- beeswarm.svcf.sficf(svcf = svcf.sficf.out$svcf,
-                                  sficf = svcf.sficf.out$sficf,
-                                  X = ecigarette$X, k = 20)
+p.beeswarm <- beeswarm.svcf.sficf(svcf = svcf.sficf.out$svcf, sficf = svcf.sficf.out$sficf, X = ecigarette$X, k = 20)
 p.beeswarm
 ```
 More Details
@@ -337,18 +330,15 @@ data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
-tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-num.rep = 2, seed = 123)
+tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W, num.rep = 2, seed = 123)
 
-svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-num.rep = 2, seed = 123)
+svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X, num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
 Draw a waterfall plot
 ```
-p.waterfall <- waterfall.svcf.cate(svcf = svcf.sficf.out$svcf, tau = tau
-                                   X = ecigarette$X, i = 1, k = 20)
+p.waterfall <- waterfall.svcf.cate(svcf = svcf.sficf.out$svcf, tau = tau, X = ecigarette$X, i = 1, k = 20)
 p.waterfall
 ```
 More Details
@@ -407,11 +397,9 @@ data(ecigarette)
 ```
 Estimate CATE, and then SVCF and SFICF
 ```
-tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W,
-              num.rep = 2, seed = 123)
+tau <- catecf(Y = ecigarette$Y, X = ecigarette$X, W = ecigarette$W, num.rep = 2, seed = 123)
 
-svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X,
-                             num.rep = 2, seed = 123)
+svcf.sficf.out <- svcf.sficf(tau = tau, X = ecigarette$X, num.rep = 2, seed = 123)
 
 names(svcf.sficf.out)
 ```
