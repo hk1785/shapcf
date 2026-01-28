@@ -8,7 +8,7 @@ Date: 2026-01-28
 
 Author: Hyunwook Koh
 
-Maintainer: Hyunwook Koh <hyunwook.koh@stonybrook.edu>
+Maintainer: Hyunwook Koh (hyunwook.koh@stonybrook.edu)
 
 Description: This R package (shapcf) provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Values for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. This package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
 
