@@ -10,7 +10,7 @@ Author: Hyunwook Koh
 
 Maintainer: Hyunwook Koh (hyunwook.koh@stonybrook.edu)
 
-Description: This R package (shapcf) provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Values for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. This package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
+Description: This R package (shapcf) provides two principled, explainable measures for causal forests, grounded in the fair allocation principle of the Shapley value. Specifically, it implements (1) SVCF (Shapley Value for Causal Forests), a local contribution measure that characterizes the directional contribution of each feature to an individual treatment effect; and (2) SFICF (Shapley Feature Importance for Causal Forests), a global feature importance measure that extends SVCF to quantify feature importance at the cohort level. This package also includes visualization tools for both local and global explanations, including summary (beeswarm), force (waterfall), and importance (bar) plots.
 
 Depends: R(>= 4.5.2), grf, ranger, treeshap, ggplot2, ggbeeswarm
 
@@ -88,7 +88,7 @@ catecf(Y, X, W, num.trees = 3000, num.rep = 1, seed = NULL,
 A numeric vector of length _n_ containing estimated CATEs.
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 10000_ and _num.rep = 10_ with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 50_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages
@@ -153,7 +153,7 @@ A list with the following components:
   (otherwise _NULL_).
 
 ### Practical Recommendation
-As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 10000_ and _num.rep = 10_ with a fixed seed, can be used to obtain more stable and reproducible results.
+As a practical recommendation, users are advised to first confirm that the function runs correctly with relatively light default settings. Once the workflow is verified, more computationally intensive configurations, such as larger values of _num.trees = 30000_ and _num.rep = 50_ with a fixed seed, can be used to obtain more stable and reproducible results.
 
 ### Example
 Import requisite R packages

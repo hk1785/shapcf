@@ -88,7 +88,7 @@ variability.
 As a practical recommendation, users are advised to first confirm that the
 function runs correctly with relatively light default settings. Once the
 workflow is verified, more computationally intensive configurations, such as
-larger values of \code{num.trees = 10000} and \code{num.rep = 10}
+larger values of \code{num.trees = 30000} and \code{num.rep = 50}
 with a fixed \code{seed}, can be used to obtain more stable and reproducible
 results.
 }
